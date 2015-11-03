@@ -56,8 +56,8 @@ async.forEach(Object.keys(blog.entries),function(slug){
         if( err ) { throw err; }
         markDown = markDown.replace( /\+ (.+?)\n/g, "<li>$1</li>" );
         markDown = markDown.replace( /(<li>.+?<\/li>)\n/g, "<ul>$1</ul>\n" );
-        markDown = markDown.replace( /\#\# (.+?)\n\n/g, "<h3>$1</h3>\n" );
-        markDown = markDown.replace( /\# (.+?)\n\n/g, "<h2>$1</h2>\n" );
+        markDown = markDown.replace( /\#\# (.+?)\n\n/g, "<h4>$1</h4>\n" );
+        markDown = markDown.replace( /\# (.+?)\n\n/g, "<h3>$1</h3>\n" );
         markDown = markDown.replace( /\!\[(.*)\]\((.*)\)/g, "<img alt='$1' src='img/$2'>" );
         markDown = markDown.replace( /(.+?)(\n\n|\n$|$)/g, "<p>$1</p>\n" );
         article += markDown;
@@ -93,16 +93,17 @@ async.forEach(Object.keys(blog.entries),function(slug){
       intro += '<span class="comment">' + blog.intro.comment + '</span>';
       // テンプレートを元にページを生成
       template = template.replace( /\#\#SITE_TITLE\#\#/g , blog.title );
+      template = template.replace( /\#\#SITE_DESC\#\#/g , blog.description );
       template = template.replace( /\#\#SITE_UPDATE_AT\#\#/g , updateAt );
       if( entry.is_toppage ) {
-        template = template.replace( /\#\#BEGIN_ENTRY\#\#.+?\#\#END_ENTRY\#\#/g ,'' );
         template = template.replace( /\#\#BEGIN_TOPPAGE\#\#/g ,'' );
         template = template.replace( /\#\#END_TOPPAGE\#\#/g ,'' );
+        template = template.replace( /\#\#BEGIN_ENTRY\#\#(.*\n){0,10000}.*?\#\#END_ENTRY\#\#/g ,'' );
         template = template.replace( /\#\#BLOG_TITLE\#\#/g , blog.title );
       } else {
-        template = template.replace( /\#\#BEGIN_TOPPAGE\#\#.+?\#\#END_TOPPAGE\#\#/g ,'' );
         template = template.replace( /\#\#BEGIN_ENTRY\#\#/g ,'' );
         template = template.replace( /\#\#END_ENTRY\#\#/g ,'' );
+        template = template.replace( /\#\#BEGIN_TOPPAGE\#\#(.*\n){0,10000}.*?\#\#END_TOPPAGE\#\#/g ,'' );
         template = template.replace( /\#\#BLOG_TITLE\#\#/g , entry.title + " - " + blog.title );
         template = template.replace( /\#\#PAGE_TITLE\#\#/g , entry.title );
       }

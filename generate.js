@@ -29,6 +29,20 @@ mkdirp(blog.content_dir,function(err){
     console.log('Copy   - js -> '+blog.content_dir+'js');
   });
 });
+// グローバルナビゲーション用情報の生成
+var navList = blog.categories;
+Object.keys(navList).forEach(function(category){
+  navList[category].list = [];
+});
+Object.keys(blog.entries).forEach(function(slug){
+  var entry = blog.entries[slug];
+  if( entry.is_toppage ) { return; }
+  navList[entry.category].list.push({
+    title: entry.title,
+    sambnail_img: entry.sambnail_img,
+    slug: slug
+  });
+});
 // 各Webページを出力する
 async.forEach(Object.keys(blog.entries),function(slug){
   var entry = blog.entries[slug];
@@ -57,6 +71,21 @@ async.forEach(Object.keys(blog.entries),function(slug){
   }).then(function( article ) { return new Promise(function(resolv){
     fs.readFile('template.html','utf8',function( err, template ) {
       if( err ) { throw err; }
+      var nav = '<ul>';
+      Object.keys(navList).forEach(function(category){
+        nav += '<li>'+navList[category].name+'</li>';
+        nav += '<ul>';
+        navList[category].list.forEach(function(entryInfo){
+          nav += '<li>';
+          if( entryInfo.slug !== slug ) { nav += '<a href="'+entryInfo.slug+'.html">'; }
+          nav += '<img src="'+entryInfo.sambnail_img+'">';
+          nav += '<span class=".title">'+entryInfo.title+'</span>';
+          if( entryInfo.slug !== slug ) { nav += '</a>'; }
+          nav += '</li>';
+        });
+        nav += '</ul>';
+      });
+      nav += '</ul>';
       template = template.replace( /\#\#SITE_TITLE\#\#/g , blog.title );
       template = template.replace( /\#\#SITE_UPDATE_AT\#\#/g , updateAt );
       if( entry.is_toppage ) {
@@ -72,6 +101,7 @@ async.forEach(Object.keys(blog.entries),function(slug){
         template = template.replace( /\#\#PAGE_TITLE\#\#/g , entry.title );
       }
       template = template.replace( /\#\#PAGE_CONTENT\#\#/g, article);
+      template = template.replace( /\#\#PAGE_NAV\#\#/g, nav);
       template = template.replace( /\#\#BLOG_COPYRIGHT\#\#/g , blog.copyright );
       resolv(template);
     });

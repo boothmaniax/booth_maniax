@@ -87,6 +87,10 @@ async.forEach(Object.keys(blog.entries),function(slug){
         nav += '</ul>';
       });
       nav += '</ul>';
+      // 自己紹介の生成
+      var intro = '<img src=' + blog.intro.img_url + ' alt="著者近影">';
+      intro += '<span class="myname">' + blog.intro.myname + '</span>';
+      intro += '<span class="comment">' + blog.intro.comment + '</span>';
       // テンプレートを元にページを生成
       template = template.replace( /\#\#SITE_TITLE\#\#/g , blog.title );
       template = template.replace( /\#\#SITE_UPDATE_AT\#\#/g , updateAt );
@@ -102,6 +106,7 @@ async.forEach(Object.keys(blog.entries),function(slug){
         template = template.replace( /\#\#BLOG_TITLE\#\#/g , entry.title + " - " + blog.title );
         template = template.replace( /\#\#PAGE_TITLE\#\#/g , entry.title );
       }
+      template = template.replace( /\#\#BLOG_INTRO\#\#/g, intro);
       template = template.replace( /\#\#PAGE_CONTENT\#\#/g, article);
       template = template.replace( /\#\#PAGE_NAV\#\#/g, nav);
       template = template.replace( /\#\#BLOG_COPYRIGHT\#\#/g , blog.copyright );

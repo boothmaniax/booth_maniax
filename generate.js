@@ -71,6 +71,7 @@ async.forEach(Object.keys(blog.entries),function(slug){
   }).then(function( article ) { return new Promise(function(resolv){
     fs.readFile('template.html','utf8',function( err, template ) {
       if( err ) { throw err; }
+      // グローバルナビゲーションの生成
       var nav = '<ul>';
       Object.keys(navList).forEach(function(category){
         nav += '<li>'+navList[category].name+'</li>';
@@ -86,6 +87,7 @@ async.forEach(Object.keys(blog.entries),function(slug){
         nav += '</ul>';
       });
       nav += '</ul>';
+      // テンプレートを元にページを生成
       template = template.replace( /\#\#SITE_TITLE\#\#/g , blog.title );
       template = template.replace( /\#\#SITE_UPDATE_AT\#\#/g , updateAt );
       if( entry.is_toppage ) {

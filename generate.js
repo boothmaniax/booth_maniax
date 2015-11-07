@@ -9,6 +9,7 @@ var fs = require('fs-extra');
 var async = require('async');
 var mkdirp = require("mkdirp");
 var glob = require("glob");
+var ncp = require('ncp').ncp;
 
 var blog = require('./docs/config.js').blog;
 
@@ -19,13 +20,13 @@ var updateAt = d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日';
 // 静的ファイルのコピー
 mkdirp(blog.content_dir,function(err){
   if( err ) { throw err; }
-  fs.copySync('./docs/img', blog.content_dir+'img',function(){
+  fs.copy('./docs/img', blog.content_dir+'img',function(){
     console.log('Copy   - img -> '+blog.content_dir+'img');
   });
-  fs.copySync('./docs/css', blog.content_dir+'css',function(){
+  fs.copy('./docs/css', blog.content_dir+'css',function(){
     console.log('Copy   - css -> '+blog.content_dir+'css');
   });
-  fs.copySync('./docs/js', blog.content_dir+'js',function(){
+  fs.copy('./docs/js', blog.content_dir+'js',function(){
     console.log('Copy   - js -> '+blog.content_dir+'js');
   });
 });
@@ -46,6 +47,7 @@ Object.keys(blog.entries).forEach(function(slug){
 // 各Webページを出力する
 async.forEach(Object.keys(blog.entries),function(slug){
   var entry = blog.entries[slug];
+  ////////////////////////////////////////////////////////////
   // マークダウン形式のファイルを読み込みHTMLの状態にしてConcat
   new Promise(function( resolv ){
     var article = "";
@@ -67,6 +69,7 @@ async.forEach(Object.keys(blog.entries),function(slug){
         }
       });
     });
+  ////////////////////////////////////////////////////////////
   // HTML記事を受け取りテンプレートを元にWebページの状態へと加工
   }).then(function( article ) { return new Promise(function(resolv){
     fs.readFile('template.html','utf8',function( err, template ) {
@@ -79,7 +82,7 @@ async.forEach(Object.keys(blog.entries),function(slug){
         navList[category].list.forEach(function(entryInfo){
           nav += '<li>';
           if( entryInfo.slug !== slug ) { nav += '<a href="'+entryInfo.slug+'.html">'; }
-          nav += '<img src="'+entryInfo.sambnail_img+'">';
+          nav += '<div class="sumbnail" style="background-image:url('+entryInfo.sambnail_img+');"></div>';
           nav += '<span class=".title">'+entryInfo.title+'</span>';
           if( entryInfo.slug !== slug ) { nav += '</a>'; }
           nav += '</li>';
@@ -89,8 +92,8 @@ async.forEach(Object.keys(blog.entries),function(slug){
       nav += '</ul>';
       // 自己紹介の生成
       var intro = '<img src=' + blog.intro.img_url + ' alt="著者近影">';
-      intro += '<span class="myname">' + blog.intro.myname + '</span>';
-      intro += '<span class="comment">' + blog.intro.comment + '</span>';
+      intro += '<div class="myname">' + blog.intro.myname + '</div>';
+      intro += '<div class="comment">' + blog.intro.comment + '</div>';
       // テンプレートを元にページを生成
       template = template.replace( /\#\#SITE_TITLE\#\#/g , blog.title );
       template = template.replace( /\#\#SITE_DESC\#\#/g , blog.description );
@@ -111,8 +114,17 @@ async.forEach(Object.keys(blog.entries),function(slug){
       template = template.replace( /\#\#PAGE_CONTENT\#\#/g, article);
       template = template.replace( /\#\#PAGE_NAV\#\#/g, nav);
       template = template.replace( /\#\#BLOG_COPYRIGHT\#\#/g , blog.copyright );
+      var footer = '';
+      var cnt = 0;
+      Object.keys(blog.footer).forEach(function(label){
+        footer += '<a href="'+blog.footer[label]+'" target="_blank">' + label + '</a>';
+        cnt++;
+        if( cnt !== Object.keys(blog.footer).length ) { footer += ' - '; }
+      });
+      template = template.replace( /\#\#BLOG_FOOTER\#\#/g , footer );
       resolv(template);
     });
+  ////////////////////////////////////////////////////////////
   // WebページをHTMLファイルとして書き出す
   });}).then(function( webPage ){ return new Promise(function(resolv){
     mkdirp(blog.content_dir,function(err){

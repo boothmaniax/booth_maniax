@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+<meta charset='utf-8' />
+<title>##BLOG_TITLE##</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Helvetica', 'Arial', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', sans-serif;
+  background-color:  rgb(250,250,250)
+}
+header {
+  text-align: center;
+  padding-bottom: 40px;
+}
+h1 {
+  margin: 0;
+  margin-top: 20px;
+  font-weight: normal;
+  font-size: 200%;
+}
+a {
+  color: gray;
+}
+img {
+  border: none;
+}
+.entry {
+  max-width: 1020px;
+  margin: 0 auto;
+}
+.entry>article {
+  float: left;
+  width: 600px;
+  padding: 40px;
+  box-shadow: 0px 0px 10px gray;
+  background-color: rgb(255,255,255);
+}
+.entry>nav {
+  float: right;
+  width: 320px;
+}
+.entry:after { /* clearfix */
+  display: block;
+  content: '';
+  clear: both;
+}
+h2,h3,h4,h5 {
+  padding: 0;
+  margin: 0;
+}
+h2 {
+  font-size: 200%;
+  font-weight: normal;
+  margin-bottom: 40px;
+}
+h3 {
+  border-bottom: 1px solid rgb(224,39,44);
+  border-left: 5px solid rgb(224,39,44);
+  color: #000;
+  text-shadow: 1px 1px #FFF;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  margin-top: 20px;
+  letter-spacing: .1em;
+  line-height: 120%;
+}
+h4 {
+}
+h5 {
+}
+p {
+  line-height: 165%;
+  word-wrap: break-word;
+}
+.content>img, .content>p>img {
+  display : block;
+  width: 100%;
+}
+nav>.intro>img {
+  display: block;
+  float: right;
+  width : 100px;
+  margin-left: 10px;
+}
+nav>.intro>.myname {
+  font-size: 140%;
+  font-weigth: bold;
+  margin-bottom: 10px;
+}
+nav>.intro>.content {
+}
+nav>.entries {
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px dotted rgb(224,39,44);
+}
+nav>.entries>ul,    nav>.entries>ul>li,
+nav>.entries>ul>ul, nav>.entries>ul>ul>li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+nav>.entries>ul>li {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+nav>.entries>ul>ul>li>.sumbnail,
+nav>.entries>ul>ul>li>a>.sumbnail {
+  display: block;
+  float:left;
+  width: 64px;
+  height: 64px;
+  margin-right: 5px;
+  background-size: cover;
+}
+nav>.entries>ul>ul>li:after { /* clearfix */
+  display: block;
+  content: '';
+  clear: both;
+}
+
+footer {
+  font-size: 80%;
+  text-align: center;
+  padding-bottom: 20px;
+}
+footer>.labels {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+</style>
+</head>
+<body>
+  <header>
+    <h1>##SITE_TITLE##</h1>
+    <div class='desc'>##SITE_DESC##</div>
+  </header>
+##BEGIN_TOPPAGE##
+  <div class='toppage'>
+    <nav>
+      <section class='entries'>
+        ##PAGE_NAV##
+      </section>
+    </nav>
+  </div>
+##END_TOPPAGE##
+##BEGIN_ENTRY##
+  <div class='entry'>
+    <article>
+      <section class='content_header'>
+        <h2>##PAGE_TITLE##</h2>
+      </section>
+      <section class='content'>
+        ##PAGE_CONTENT##
+      </section>
+      <section class='content_footer'>
+      </section>
+    </article>
+    <nav>
+      <section class='intro'>
+        ##BLOG_INTRO##
+      </section>
+      <section class='entries'>
+        ##PAGE_NAV##
+      </section>
+    </nav>
+  </div>
+##END_ENTRY##
+  <footer>
+    <div class='labels'>##BLOG_FOOTER##</div>
+    <div class='copyright'>##BLOG_COPYRIGHT##</div>
+  </footer>
+<script>
+(function(){
+
+})();
+</script>
+</body>
+</html>

@@ -31,7 +31,7 @@ exports.blog = {
     },
     whats_booth: {
       title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',
-      sambnail_img: 'img/self.png', category:'beginner',
+      sambnail_img: 'img/boot_image.jpg', category:'beginner',
       contents:['whats_booth'],
     },
   },

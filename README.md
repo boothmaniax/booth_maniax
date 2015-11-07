@@ -21,7 +21,7 @@ npm init
 コンテンツをコンバートさせるのは、以下のコマンドです。
 
 ```bash
-npm generate.js
+node generate.js
 ```
 
 すると「./content/sakurashiki.github.io」の配下に、Webページとして表示可能なコンテンツが配置されます。あとは、適当なWebサーバーなんかをローカルで動かして、コンテンツを表示させて確認するだけです。

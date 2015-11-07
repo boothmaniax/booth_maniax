@@ -2,7 +2,7 @@
 <html lang='ja'>
 <head>
 <meta charset='utf-8' />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>##BLOG_TITLE##</title>
 <style>
 /* 全体共通 */
@@ -21,7 +21,6 @@ body {
     padding: 2%;
   }
 }
-
 header {
   text-align: center;
   padding-bottom: 40px;
@@ -43,6 +42,7 @@ img {
   border: none;
 }
 main, footer {
+  width: 100%;
   max-width: 1020px;
   margin: 0 auto;
 }
@@ -95,6 +95,17 @@ h2 {
   font-weight: normal;
   margin-bottom: 40px;
 }
+@media screen and (min-width: 680px){
+  h2 {
+    padding-top: 0px;
+  }
+}
+@media screen and (max-width: 679px){
+  h2 {
+    padding-top: 20px;
+  }
+}
+
 h3 {
   border-bottom: 1px solid rgb(224,39,44);
   border-left: 5px solid rgb(224,39,44);

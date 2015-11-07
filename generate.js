@@ -56,7 +56,7 @@ async.forEach(Object.keys(blog.entries),function(slug){
       var finCount = 0;
       fs.readFile(mdFileName, 'utf8', function( err, markDown ) {
         if( err ) { throw err; }
-        markDown = markDown.replace( /\n\+ (.+?)\n/g, "<li>$1</li>" );
+        markDown = markDown.replace( /\+ (.+?)\n/g, "<li>$1</li>" );
         markDown = markDown.replace( /(<li>.+?<\/li>)\n/g, "<ul>$1</ul>\n" );
         markDown = markDown.replace( /\#\# (.+?)\n\n/g, "<h4>$1</h4>\n" );
         markDown = markDown.replace( /\# (.+?)\n\n/g, "<h3>$1</h3>\n" );

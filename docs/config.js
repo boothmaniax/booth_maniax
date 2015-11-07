@@ -13,7 +13,13 @@ exports.blog = {
   ga_id : '',
   categories: {
     beginner: { name:'入門編' },
+    beginner2: { name:'入門編' },
+    beginner3: { name:'入門編' },
   },
+  top: 'このブログでは、ピクシブが運営している通販サービス「BOOTH」の使い方やTIPSを紹介しています！' +
+       '創作活動をしているみなさんが、ネット上でちょっとした作品を公開したいとか、グッツを作って売ってみたいとか、' +
+       'そういう悩みに答えられるようにしていきます。どんどんコンテンツを増やしていく予定ですので、どうぞお楽しみ下さい！',
+  bottom: '',
   footer: {
     'コンテンツリポジトリ' : 'https://github.com/sakurashiki/booth_maniax',
     'Twitter(@_sakurashiki)' : 'https://twitter.com/_sakurashiki',
@@ -27,7 +33,27 @@ exports.blog = {
     },
     whats_booth: {
       title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',
-      sambnail_img: null, category:'beginner',
+      sambnail_img: 'img/self.png', category:'beginner',
+      contents:['whats_booth'],
+    },
+    whats_booth1: {
+      title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',
+      sambnail_img: 'img/self.png', category:'beginner',
+      contents:['whats_booth'],
+    },
+    whats_booth2: {
+      title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',
+      sambnail_img: 'img/self.png', category:'beginner2',
+      contents:['whats_booth'],
+    },
+    whats_booth3: {
+      title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',
+      sambnail_img: 'img/self.png', category:'beginner3',
+      contents:['whats_booth'],
+    },
+    whats_booth4: {
+      title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',
+      sambnail_img: 'img/self.png', category:'beginner',
       contents:['whats_booth'],
     },
   },

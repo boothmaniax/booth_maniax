@@ -4,6 +4,7 @@
 <meta charset='utf-8' />
 <title>##BLOG_TITLE##</title>
 <style>
+/* 全体共通 */
 body {
   margin: 0;
   font-family: 'Helvetica', 'Arial', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', sans-serif;
@@ -29,10 +30,15 @@ a {
 img {
   border: none;
 }
-.entry {
+main {
   max-width: 1020px;
   margin: 0 auto;
 }
+/* トップページ用コンテンツのデザイン */
+.toppage>.blog_top, .toppage>.blog_bottom {
+  font-size: 85%;
+}
+/* エントリー専用デザイン */
 .entry>article {
   float: left;
   width: 600px;
@@ -70,10 +76,6 @@ h3 {
   letter-spacing: .1em;
   line-height: 120%;
 }
-h4 {
-}
-h5 {
-}
 p {
   line-height: 165%;
   word-wrap: break-word;
@@ -82,6 +84,7 @@ p {
   display : block;
   width: 100%;
 }
+/* 自己紹介 */
 nav>.intro>img {
   display: block;
   float: right;
@@ -95,23 +98,67 @@ nav>.intro>.myname {
 }
 nav>.intro>.content {
 }
-nav>.entries {
-  padding-top: 20px;
-  margin-top: 20px;
-  border-top: 1px dotted rgb(224,39,44);
-}
+/* ナビゲーション共通 */
 nav>.entries>ul,    nav>.entries>ul>li,
 nav>.entries>ul>ul, nav>.entries>ul>ul>li {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-nav>.entries>ul>li {
-  font-weight: bold;
+/* トップページ上のナビゲーション */
+.toppage>nav>.entries>ul>li {
+  border-top: 1px dotted rgb(224,39,44);
+  font-size: 160%;
+  margin-bottom: 5px;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.toppage>nav>.entries>ul>ul>li {
+  font-size: 110%;
+}
+.toppage>nav>.entries>ul>ul>li>a {
+  color : inherit;
+  text-decoration: none;
+}
+.toppage>nav>.entries>ul>ul>li>a:hover {
+  color : rgba(0,0,0,0.5);
+}
+.toppage>nav>.entries>ul>ul>li {
+  float: left;
+  width: 340px;
+  margin-top: 5px;
   margin-bottom: 5px;
 }
-nav>.entries>ul>ul>li>.sumbnail,
-nav>.entries>ul>ul>li>a>.sumbnail {
+.toppage>nav>.entries>ul>ul>li>.sumbnail,
+.toppage>nav>.entries>ul>ul>li>a>.sumbnail {
+  display: block;
+  float:left;
+  width: 150px;
+  height: 100px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-size: cover;
+}
+.toppage>nav>.entries>ul>ul:after { /* clearfix */
+  display: block;
+  content: '';
+  clear: both;
+}
+.toppage>nav>.entries>ul>ul>li:after { /* clearfix */
+  display: block;
+  content: '';
+  clear: both;
+}
+/* サイドバー上のナビゲーション */
+.entry>nav>.entries>ul>li {
+  font-weight: bold;
+  margin-bottom: 5px;
+  border-top: 1px dotted rgb(224,39,44);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.entry>nav>.entries>ul>ul>li>.sumbnail,
+.entry>nav>.entries>ul>ul>li>a>.sumbnail {
   display: block;
   float:left;
   width: 64px;
@@ -119,7 +166,7 @@ nav>.entries>ul>ul>li>a>.sumbnail {
   margin-right: 5px;
   background-size: cover;
 }
-nav>.entries>ul>ul>li:after { /* clearfix */
+.entry>nav>.entries>ul>ul>li:after { /* clearfix */
   display: block;
   content: '';
   clear: both;
@@ -142,16 +189,18 @@ footer>.labels {
     <div class='desc'>##SITE_DESC##</div>
   </header>
 ##BEGIN_TOPPAGE##
-  <div class='toppage'>
+  <main class='toppage'>
+    <section class='blog_top'>##BLOG_TOP##</section>
     <nav>
       <section class='entries'>
         ##PAGE_NAV##
       </section>
     </nav>
-  </div>
+    <section class='blog_bottom'>##BLOG_BOTTOM##</section>
+  </main>
 ##END_TOPPAGE##
 ##BEGIN_ENTRY##
-  <div class='entry'>
+  <main class='entry'>
     <article>
       <section class='content_header'>
         <h2>##PAGE_TITLE##</h2>
@@ -170,7 +219,7 @@ footer>.labels {
         ##PAGE_NAV##
       </section>
     </nav>
-  </div>
+  </main>
 ##END_ENTRY##
   <footer>
     <div class='labels'>##BLOG_FOOTER##</div>

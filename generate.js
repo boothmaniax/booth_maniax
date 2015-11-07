@@ -104,6 +104,8 @@ async.forEach(Object.keys(blog.entries),function(slug){
         template = template.replace( /\#\#END_TOPPAGE\#\#/g ,'' );
         template = template.replace( /\#\#BEGIN_ENTRY\#\#(.*\n){0,10000}.*?\#\#END_ENTRY\#\#/g ,'' );
         template = template.replace( /\#\#BLOG_TITLE\#\#/g , blog.title );
+        template = template.replace( /\#\#BLOG_TOP\#\#/g , blog.top );
+        template = template.replace( /\#\#BLOG_BOTTOM\#\#/g , blog.bottom );
       } else {
         template = template.replace( /\#\#BEGIN_ENTRY\#\#/g ,'' );
         template = template.replace( /\#\#END_ENTRY\#\#/g ,'' );

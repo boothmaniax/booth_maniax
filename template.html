@@ -2,6 +2,7 @@
 <html lang='ja'>
 <head>
 <meta charset='utf-8' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>##BLOG_TITLE##</title>
 <style>
 /* 全体共通 */
@@ -10,6 +11,17 @@ body {
   font-family: 'Helvetica', 'Arial', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', sans-serif;
   background-color:  rgb(250,250,250)
 }
+@media screen and (min-width: 680px){
+  body {
+    padding: 0%;
+  }
+}
+@media screen and (max-width: 679px){
+  body {
+    padding: 2%;
+  }
+}
+
 header {
   text-align: center;
   padding-bottom: 40px;
@@ -37,6 +49,7 @@ main {
 /* トップページ用コンテンツのデザイン */
 .toppage>.blog_top, .toppage>.blog_bottom {
   font-size: 85%;
+  word-wrap: break-word;
 }
 /* エントリー専用デザイン */
 .entry>article {
@@ -85,6 +98,11 @@ p {
   width: 100%;
 }
 /* 自己紹介 */
+nav>.intro {
+  border-top: 1px dotted rgb(224,39,44);
+  padding-top: 20px;
+  margin-top: 20px;
+}
 nav>.intro>img {
   display: block;
   float: right;
@@ -125,7 +143,6 @@ nav>.entries>ul>ul, nav>.entries>ul>ul>li {
 }
 .toppage>nav>.entries>ul>ul>li {
   float: left;
-  width: 340px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -133,11 +150,28 @@ nav>.entries>ul>ul, nav>.entries>ul>ul>li {
 .toppage>nav>.entries>ul>ul>li>a>.sumbnail {
   display: block;
   float:left;
-  width: 150px;
   height: 100px;
   margin-left: 5px;
   margin-right: 5px;
   background-size: cover;
+}
+@media screen and (min-width: 680px){
+  .toppage>nav>.entries>ul>ul>li {
+    width: 33.3%;
+  }
+  .toppage>nav>.entries>ul>ul>li>.sumbnail,
+  .toppage>nav>.entries>ul>ul>li>a>.sumbnail {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 679px){
+  .toppage>nav>.entries>ul>ul>li {
+    width: 100%;
+  }
+  .toppage>nav>.entries>ul>ul>li>.sumbnail,
+  .toppage>nav>.entries>ul>ul>li>a>.sumbnail {
+    width: 30%;
+  }
 }
 .toppage>nav>.entries>ul>ul:after { /* clearfix */
   display: block;
@@ -171,7 +205,6 @@ nav>.entries>ul>ul, nav>.entries>ul>ul>li {
   content: '';
   clear: both;
 }
-
 footer {
   font-size: 80%;
   text-align: center;
@@ -212,11 +245,11 @@ footer>.labels {
       </section>
     </article>
     <nav>
-      <section class='intro'>
-        ##BLOG_INTRO##
-      </section>
       <section class='entries'>
         ##PAGE_NAV##
+      </section>
+      <section class='intro'>
+        ##BLOG_INTRO##
       </section>
     </nav>
   </main>

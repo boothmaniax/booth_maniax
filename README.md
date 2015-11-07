@@ -4,7 +4,7 @@ BOOTH MANIAXは、ピクシブが運営しているBOOTHというサービスに
 
 ![BOOTHとは？](https://asset.booth.pm/assets/og_image-66cd86158079788d8c77dd34ee359ace.jpg)
 
-## ローカル環境でコンテンツの見え方を見たい場合
+## ローカル環境でコンテンツの見え方を確認したい場合(Get Start!)
 
 コンテンツはNode.jsで作られたツールを使って、元データからコンバートを行ってgithub pages上に配置されています。node.jsのインストールが必要です。
 

@@ -13,8 +13,6 @@ exports.blog = {
   ga_id : '',
   categories: {
     beginner: { name:'入門編' },
-    beginner1: { name:'入門編' },
-    beginner2: { name:'入門編' }
   },
   footer: {
     'コンテンツリポジトリ' : 'https://github.com/sakurashiki/booth_maniax',
@@ -30,31 +28,6 @@ exports.blog = {
     whats_booth: {
       title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',
       sambnail_img: null, category:'beginner',
-      contents:['whats_booth'],
-    },
-    whats_booth1: {
-      title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',
-      sambnail_img: null, category:'beginner',
-      contents:['whats_booth'],
-    },
-    whats_booth2: {
-      title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',
-      sambnail_img: null, category:'beginner',
-      contents:['whats_booth'],
-    },
-    whats_booth0: {
-      title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',
-      sambnail_img: null, category:'beginner1',
-      contents:['whats_booth'],
-    },
-    whats_booth01: {
-      title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',
-      sambnail_img: null, category:'beginner2',
-      contents:['whats_booth'],
-    },
-    whats_booth02: {
-      title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',
-      sambnail_img: null, category:'beginner2',
       contents:['whats_booth'],
     },
   },

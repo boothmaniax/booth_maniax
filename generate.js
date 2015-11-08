@@ -120,6 +120,7 @@ async.forEach(Object.keys(blog.entries),function(slug){
       template = template.replace( /\#\#BLOG_INTRO\#\#/g, intro);
       template = template.replace( /\#\#PAGE_CONTENT\#\#/g, article);
       template = template.replace( /\#\#PAGE_NAV\#\#/g, nav);
+      template = template.replace( /\#\#BLOG_GA\#\#/g, blog.ga_id);
       template = template.replace( /\#\#BLOG_COPYRIGHT\#\#/g , blog.copyright );
       var footer = '';
       var cnt = 0;

@@ -11,7 +11,7 @@ exports.blog = {
     myname: 'さくらしき',
     comment: '創作活動とかをやりつつも、BOOTHの使い方とか研究して紹介しています。このWebサイトは、BOOTHを運営しているピクシブ株式会社とは関係ない、ただの非公式ブログです。サービスの問題について、色々問い合わされても答えられません。質問があれば、<a href="https://twitter.com/_sakurashiki">Twitter</a>まで！',
   },
-  ga_id : '',
+  ga_id : 'UA-69852218-1',
   categories: {
     beginner: { name:'入門編' },
   },

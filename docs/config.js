@@ -5,6 +5,7 @@ exports.blog = {
   url_top: 'https://boothmaniax.github.io/',
   content_dir: './contents/boothmaniax.github.io/',
   copyright: 'Copyright (C) 2015 さくらしき All Rights Reserved.',
+  sambnail_img: 'img/boot_image.jpg',
   intro: {
     img_url: 'img/self.png',
     myname: 'さくらしき',

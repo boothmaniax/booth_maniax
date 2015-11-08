@@ -107,6 +107,7 @@ async.forEach(Object.keys(blog.entries),function(slug){
         template = template.replace( /\#\#BLOG_TOP\#\#/g , blog.top );
         template = template.replace( /\#\#BLOG_BOTTOM\#\#/g , blog.bottom );
         template = template.replace( /\#\#PAGE_SUMBNAIL\#\#/g ,blog.url_top + blog.sambnail_img );
+        template = template.replace( /\#\#ENTRY_URL\#\#/g , blog.url_top );
       } else {
         template = template.replace( /\#\#BEGIN_ENTRY\#\#/g ,'' );
         template = template.replace( /\#\#END_ENTRY\#\#/g ,'' );
@@ -114,6 +115,7 @@ async.forEach(Object.keys(blog.entries),function(slug){
         template = template.replace( /\#\#BLOG_TITLE\#\#/g , entry.title + " - " + blog.title );
         template = template.replace( /\#\#PAGE_TITLE\#\#/g , entry.title );
         template = template.replace( /\#\#PAGE_SUMBNAIL\#\#/g ,blog.url_top + entry.sambnail_img );
+        template = template.replace( /\#\#ENTRY_URL\#\#/g , blog.url_top + slug + '.html');
       }
       template = template.replace( /\#\#BLOG_INTRO\#\#/g, intro);
       template = template.replace( /\#\#PAGE_CONTENT\#\#/g, article);

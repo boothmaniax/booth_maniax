@@ -106,12 +106,14 @@ async.forEach(Object.keys(blog.entries),function(slug){
         template = template.replace( /\#\#BLOG_TITLE\#\#/g , blog.title );
         template = template.replace( /\#\#BLOG_TOP\#\#/g , blog.top );
         template = template.replace( /\#\#BLOG_BOTTOM\#\#/g , blog.bottom );
+        template = template.replace( /\#\#PAGE_SUMBNAIL\#\#/g ,blog.url_top + blog.sambnail_img );
       } else {
         template = template.replace( /\#\#BEGIN_ENTRY\#\#/g ,'' );
         template = template.replace( /\#\#END_ENTRY\#\#/g ,'' );
         template = template.replace( /\#\#BEGIN_TOPPAGE\#\#(.*\n){0,10000}.*?\#\#END_TOPPAGE\#\#/g ,'' );
         template = template.replace( /\#\#BLOG_TITLE\#\#/g , entry.title + " - " + blog.title );
         template = template.replace( /\#\#PAGE_TITLE\#\#/g , entry.title );
+        template = template.replace( /\#\#PAGE_SUMBNAIL\#\#/g ,blog.url_top + entry.sambnail_img );
       }
       template = template.replace( /\#\#BLOG_INTRO\#\#/g, intro);
       template = template.replace( /\#\#PAGE_CONTENT\#\#/g, article);

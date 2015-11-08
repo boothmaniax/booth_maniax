@@ -28,6 +28,7 @@ exports.blog = {
       is_toppage: true,
       sambnail_img: null,
       contents:['index'],
+      sambnail_img: 'img/boot_image.jpg',
     },
     whats_booth: {
       title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',

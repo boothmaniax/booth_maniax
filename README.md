@@ -30,9 +30,9 @@ node generate.js
 
 ブログエントリの文章は、全て[docs配下](https://github.com/sakurashiki/booth_maniax/tree/master/docs)にMarkdown方式で保存されています。
 
-boothmaniaxで扱っているコンテンツは、同じ説明を複数のエントリで繰り返し行う必要があるため、メンテナンスが大変です。そこで、独自のブログ生成ツール(generate.js)を使って、複数のコンテンツをくっつけてひとつのエントリーにできるようにしています。同じ説明文は、一箇所で記述できるようになっています。文言の修正をしたい場合、例え複数のエントリーにまたがるようなものであっても、docs配下を検索して一つのファイルのみを修正すればOKという感じになっています。
+boothmaniaxで扱っているコンテンツは、同じ説明を複数のエントリで繰り返し行う必要があるため、メンテナンスが大変です。そこで、独自のブログ生成ツール「[generate.js](https://github.com/sakurashiki/booth_maniax/blob/master/generate.js)」を使って、複数のコンテンツをくっつけてひとつのエントリーにできるようにしています。同じ説明文は、一箇所で記述できるようになっています。文言の修正をしたい場合、例え複数のエントリーにまたがるようなものであっても、docs配下を検索して一つのファイルのみを修正すればOKという感じになっています。
 
-Markdownファイルの結合順序については、[config.js](https://github.com/sakurashiki/booth_maniax/blob/master/docs/config.js)にて定義されています。entriesプロパティの下に、各ブログエントリーの情報が記述されており、contentsプロパティ内でリストとして結合順序が定義されています。
+Markdownファイルの結合順序については、設定ファイル「[config.js](https://github.com/sakurashiki/booth_maniax/blob/master/docs/config.js)」にて定義されています。この設定ファイルをgenerate.jsが読み込み、Webページの元ファイルを生成しています。config.jsのentriesプロパティの下には、各ブログエントリーの情報が記述されており、contentsプロパティ内でリストとして結合順序が定義されています。
 
 
 ```javascript

@@ -301,13 +301,12 @@ footer>.labels {
   </header>
 ##BEGIN_TOPPAGE##
   <main class='toppage'>
-    <section class='blog_top'>##BLOG_TOP##</section>
+    <section class='blog_top'>このブログでは、ピクシブが運営している通販サービス「BOOTH」の使い方やTIPSを紹介しています！創作活動をしているみなさんが、ネット上でちょっとした作品を公開したいとか、グッツを作って売ってみたいとか、そういう悩みに答えられるようにしていきます。どんどんコンテンツを増やしていく予定ですので、どうぞお楽しみ下さい！</section>
     <nav>
       <section class='entries'>
         ##PAGE_NAV##
       </section>
     </nav>
-    <section class='blog_bottom'>##BLOG_BOTTOM##</section>
   </main>
 ##END_TOPPAGE##
 ##BEGIN_ENTRY##
@@ -345,21 +344,27 @@ footer>.labels {
       </section>
       <section class='intro'>
         <div class='nav_title'>このブログのライター</div>
-        ##BLOG_INTRO##
+        <img src=img/self.png alt="著者近影">
+        <div class="myname">さくらしき</div>
+        <div class="comment">創作活動とかをやりつつも、BOOTHの使い方とか研究して紹介している趣味ブログです。誤字脱字、内容に誤りがあれば、ぜひぜひ<a href="https://twitter.com/_sakurashiki" target='_blank'>Twitter</a>までご連絡下さい！<a href='https://github.com/sakurashiki/booth_maniax' target='_blank'>プルリクエスト</a>でも受け付けてます！！</div>
       </section>
     </nav>
   </main>
 ##END_ENTRY##
   <footer>
-    <div class='labels'>##BLOG_FOOTER##</div>
-    <div class='copyright'>##BLOG_COPYRIGHT##</div>
+    <div class='labels'>
+      <a href='https://github.com/sakurashiki/booth_maniax' target='_blank'>コンテンツリポジトリ</a> -
+      <a href='https://twitter.com/_sakurashiki' target='_blank'>Twitter(@_sakurashiki)</a> -
+      <a href='http://sakurashiki.github.io/' target='_blank'>サークルページ</a>
+    </div>
+    <div class='copyright'>Copyright (C) 2015 さくらしき All Rights Reserved.</div>
   </footer>
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', '##BLOG_GA##', 'auto');
+  ga('create', 'UA-69852218-1', 'auto');
   ga('send', 'pageview');
 </script>
 </body>

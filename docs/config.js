@@ -1,29 +1,19 @@
 exports.blog = {
 
   title: 'BOOTHマニアックス!!',
-  description: 'ピクシブが運営するサービス「BOOTH」の謎を解き明かしてみるブログ',
+  description: '創作をしている人たちのネット販売のハードルを下げようと、いろいろと情報発信しています',
   url_top: 'https://boothmaniax.github.io/',
   content_dir: './contents/boothmaniax.github.io/',
-  copyright: 'Copyright (C) 2015 さくらしき All Rights Reserved.',
   sambnail_img: 'img/boot_image.jpg',
-  intro: {
-    img_url: 'img/self.png',
-    myname: 'さくらしき',
-    comment: '創作活動とかをやりつつも、BOOTHの使い方とか研究して紹介しています。このWebサイトは、BOOTHを運営しているピクシブ株式会社とは関係ない、ただの非公式ブログです。サービスの問題について、色々問い合わされても答えられません。質問があれば、<a href="https://twitter.com/_sakurashiki">Twitter</a>まで！',
-  },
-  ga_id : 'UA-69852218-1',
+  /* ブログのカテゴリー：ナビゲーションの分類 */
   categories: {
-    beginner: { name:'入門編' },
+    beginner: { name:'BOOTH入門編' },
+    // shop: { name:'ショップページの見せ方TIPS' },
+    // item: { name:'商品ページの見せ方編TIPS' },
+    // risk: { name:'販売リスクを減らすTIPS' },
+    // faq: { name:'よくあるハマりどころ' },
   },
-  top: 'このブログでは、ピクシブが運営している通販サービス「BOOTH」の使い方やTIPSを紹介しています！' +
-       '創作活動をしているみなさんが、ネット上でちょっとした作品を公開したいとか、グッツを作って売ってみたいとか、' +
-       'そういう悩みに答えられるようにしていきます。どんどんコンテンツを増やしていく予定ですので、どうぞお楽しみ下さい！',
-  bottom: '',
-  footer: {
-    'コンテンツリポジトリ' : 'https://github.com/sakurashiki/booth_maniax',
-    'Twitter(@_sakurashiki)' : 'https://twitter.com/_sakurashiki',
-    'サークルページ': 'http://sakurashiki.github.io/'
-  },
+  /* カテゴリーの分類 */
   entries: {
     index: {
       is_toppage: true,
@@ -31,10 +21,97 @@ exports.blog = {
       contents:['index'],
       sambnail_img: 'img/boot_image.jpg',
     },
+    before_store_open: {
+      title: '同人作家やアーティストが、作品をネット通販する前に知るべき3つのポイント',
+      shorter_title: '作品をネット通販する前に知るべき3つのポイント',
+      sambnail_img: 'img/151109_0008.jpg', category:'beginner',
+      contents:['before_store_open_begin','shop_type','sale_type','commission_type','before_store_open_end']
+    },
+    /*
     whats_booth: {
       title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',
+      shorter_title: 'BOOTHという通販サービスの魅力は何？',
       sambnail_img: 'img/boot_image.jpg', category:'beginner',
       contents:['whats_booth'],
     },
+    minuts_to_start: {
+      title: 'たった3分で、一切お金をかけずに作品のネット販売を始めてみる！',
+      shorter_title: '3分でさくっと作品のネット販売を始めてみる！',
+      sambnail_img: 'img/boot_image.jpg', category:'beginner',
+      contents:['3minuts_to_start'],
+    },
+    */
+    /*
+    item_music: {
+      title: 'BOOTHで音楽をダウンロード配信する方法',
+      shorter_title: '音楽をダウンロード配信する方法',
+      sambnail_img: 'img/.jpg', category:'item',
+      contents:[],
+    },
+    */
+    /*
+    item_novel: {
+      title: 'BOOTHで小説を販売する方法',
+      shorter_title: '小説を販売する方法',
+      sambnail_img: 'img/.jpg', category:'item',
+      contents:[],
+    },
+    */
+    /*
+    item_dojin: {
+      title: 'BOOTHで同人誌を販売する方法',
+      shorter_title: '同人誌を販売する方法',
+      sambnail_img: 'img/.jpg', category:'item',
+      contents:[],
+    },
+    */
+    /*
+    item_goods: {
+      title: 'BOOTHでグッツを販売する方法',
+      shorter_title: '同人誌を販売する方法',
+      sambnail_img: 'img/.jpg', category:'item',
+      contents:[],
+    },
+    */
+    /*
+    download_and_package_variation: {
+      title: 'BOOTHでダウンロード版とパッケージ版の両方を販売する方法',
+      shorter_title: 'ダウンロード版とパッケージ版の両方を販売する方法',
+      sambnail_img: 'img/.jpg', category:'item',
+      contents:[],
+    },
+    */
+    /*
+    free_and_production_variation: {
+      title: 'BOOTHで無料版DLと有料版DLの両方を販売する方法',
+      shorter_title: '無料版DLと有料版DLの両方を販売する方法',
+      sambnail_img: 'img/.jpg', category:'item',
+      contents:[],
+    },
+    */
+    /*
+    size_variation: {
+      title: 'BOOTHでサイズ別でTシャツ/衣類を販売する方法',
+      shorter_title: 'サイズ別でTシャツ/衣類を販売する方法',
+      sambnail_img: 'img/.jpg', category:'item',
+      contents:[],
+    },
+    */
+    /*
+    charactor_variation: {
+      title: 'BOOTHでキャラクター別でグッツを販売する方法',
+      shorter_title: 'キャラクター別でグッツを販売する方法',
+      sambnail_img: 'img/.jpg', category:'item',
+      contents:[],
+    },
+    */
+    /*
+    color_variation: {
+      title: 'BOOTHでカラー別でグッツを販売する方法',
+      shorter_title: 'カラー別でグッツを販売する方法',
+      sambnail_img: 'img/.jpg', category:'item',
+      contents:[],
+    },
+    */
   },
 };

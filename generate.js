@@ -39,36 +39,35 @@ Object.keys(blog.entries).forEach(function(slug){
   var entry = blog.entries[slug];
   if( entry.is_toppage ) { return; }
   navList[entry.category].list.push({
-    title: entry.title,
+    title: entry.shorter_title,
     sambnail_img: entry.sambnail_img,
     slug: slug
   });
 });
-// 各Webページを出力する
+// 各Webページを非同期で出力する
 async.forEach(Object.keys(blog.entries),function(slug){
   var entry = blog.entries[slug];
   ////////////////////////////////////////////////////////////
-  // マークダウン形式のファイルを読み込みHTMLの状態にしてConcat
+  // マークダウン形式のファイルを逐次読み込みHTMLの状態にしてConcat
   new Promise(function( resolv ){
-    var article = "";
+    var article = '';
     entry.contents.forEach(function(content){
       var mdFileName = 'docs/'+content+'.md';
-      var finCount = 0;
-      fs.readFile(mdFileName, 'utf8', function( err, markDown ) {
-        if( err ) { throw err; }
-        markDown = markDown.replace( /\+ (.+?)\n/g, "<li>$1</li>" );
-        markDown = markDown.replace( /(<li>.+?<\/li>)\n/g, "<ul>$1</ul>\n" );
-        markDown = markDown.replace( /\#\# (.+?)\n\n/g, "<h4>$1</h4>\n" );
-        markDown = markDown.replace( /\# (.+?)\n\n/g, "<h3>$1</h3>\n" );
-        markDown = markDown.replace( /\!\[(.*)\]\((.*)\)/g, "<img alt='$1' src='img/$2'>" );
-        markDown = markDown.replace( /(.+?)(\n\n|\n$|$)/g, "<p>$1</p>\n" );
-        article += markDown;
-        finCount++;
-        if( finCount === entry.contents.length ) {
-          resolv( article );
-        }
-      });
+      var stat = fs.statSync(mdFileName);
+      var fd = fs.openSync(mdFileName, "r");
+      var markDown = fs.readSync(fd, stat.size, 0, 'utf8')[0];
+      markDown = markDown.replace( /\+ (.+?)\n/g, "<li>$1</li>" );
+      markDown = markDown.replace( /\- (.+?)\n/g, "<li>$1</li>" );
+      markDown = markDown.replace( /(<li>.+?<\/li>)\n/g, "<ul>$1</ul>\n" );
+      markDown = markDown.replace( /\#\# (.+?)\n\n/g, "<h4>$1</h4>\n" );
+      markDown = markDown.replace( /\# (.+?)\n\n/g, "<h3>$1</h3>\n" );
+      markDown = markDown.replace( /\!\[(.*)\]\((.*)\)/g, "<img alt='$1' src='img/$2'>" );
+      markDown = markDown.replace( /(.+?)(\n\n|\n$|$)/g, "<p>$1</p>\n" );
+      markDown = markDown.replace( /\[(.+?)\]\((.+?)\)/g, "<a href='$2'>$1</a>" );
+      fs.closeSync(fd);
+      article += markDown;
     });
+    resolv( article );
   ////////////////////////////////////////////////////////////
   // HTML記事を受け取りテンプレートを元にWebページの状態へと加工
   }).then(function( article ) { return new Promise(function(resolv){
@@ -90,10 +89,6 @@ async.forEach(Object.keys(blog.entries),function(slug){
         nav += '</ul>';
       });
       nav += '</ul>';
-      // 自己紹介の生成
-      var intro = '<img src=' + blog.intro.img_url + ' alt="著者近影">';
-      intro += '<div class="myname">' + blog.intro.myname + '</div>';
-      intro += '<div class="comment">' + blog.intro.comment + '</div>';
       // テンプレートを元にページを生成
       template = template.replace( /\#\#SITE_TITLE\#\#/g , blog.title );
       template = template.replace( /\#\#SITE_DESC\#\#/g , blog.description );
@@ -104,8 +99,6 @@ async.forEach(Object.keys(blog.entries),function(slug){
         template = template.replace( /\#\#END_TOPPAGE\#\#/g ,'' );
         template = template.replace( /\#\#BEGIN_ENTRY\#\#(.*\n){0,10000}.*?\#\#END_ENTRY\#\#/g ,'' );
         template = template.replace( /\#\#BLOG_TITLE\#\#/g , blog.title );
-        template = template.replace( /\#\#BLOG_TOP\#\#/g , blog.top );
-        template = template.replace( /\#\#BLOG_BOTTOM\#\#/g , blog.bottom );
         template = template.replace( /\#\#PAGE_SUMBNAIL\#\#/g ,blog.url_top + blog.sambnail_img );
         template = template.replace( /\#\#ENTRY_URL\#\#/g , blog.url_top );
       } else {
@@ -117,19 +110,8 @@ async.forEach(Object.keys(blog.entries),function(slug){
         template = template.replace( /\#\#PAGE_SUMBNAIL\#\#/g ,blog.url_top + entry.sambnail_img );
         template = template.replace( /\#\#ENTRY_URL\#\#/g , blog.url_top + slug + '.html');
       }
-      template = template.replace( /\#\#BLOG_INTRO\#\#/g, intro);
       template = template.replace( /\#\#PAGE_CONTENT\#\#/g, article);
       template = template.replace( /\#\#PAGE_NAV\#\#/g, nav);
-      template = template.replace( /\#\#BLOG_GA\#\#/g, blog.ga_id);
-      template = template.replace( /\#\#BLOG_COPYRIGHT\#\#/g , blog.copyright );
-      var footer = '';
-      var cnt = 0;
-      Object.keys(blog.footer).forEach(function(label){
-        footer += '<a href="'+blog.footer[label]+'" target="_blank">' + label + '</a>';
-        cnt++;
-        if( cnt !== Object.keys(blog.footer).length ) { footer += ' - '; }
-      });
-      template = template.replace( /\#\#BLOG_FOOTER\#\#/g , footer );
       resolv(template);
     });
   ////////////////////////////////////////////////////////////

@@ -27,21 +27,19 @@ exports.blog = {
       sambnail_img: 'img/151109_0008.jpg', category:'beginner',
       contents:['before_store_open_begin','shop_type','sale_type','commission_type','before_store_open_end']
     },
+    minuts_to_start: {
+      title: '3分で個人のネットショップを開いて、同人グッツの販売を始めてみた',
+      shorter_title: '3分でさくっとショップを開設し、作品のネット販売を始める',
+      sambnail_img: 'img/151110_0011.jpg', category:'beginner',
+      contents:['3minuts_to_start'],
+    },
     /*
     whats_booth: {
-      title: 'ピクシブが作ったBOOTHという通販サービスの魅力は何？',
-      shorter_title: 'BOOTHという通販サービスの魅力は何？',
+      title: '創作活動向けネットショップサービス「BOOTH」は何が良くて何がダメなのか？',
+      shorter_title: 'BOOTHという創作向け通販サービスのメリット・デメリット',
       sambnail_img: 'img/boot_image.jpg', category:'beginner',
       contents:['whats_booth'],
     },
-    minuts_to_start: {
-      title: 'たった3分で、一切お金をかけずに作品のネット販売を始めてみる！',
-      shorter_title: '3分でさくっと作品のネット販売を始めてみる！',
-      sambnail_img: 'img/boot_image.jpg', category:'beginner',
-      contents:['3minuts_to_start'],
-    },
-    */
-    /*
     item_music: {
       title: 'BOOTHで音楽をダウンロード配信する方法',
       shorter_title: '音楽をダウンロード配信する方法',

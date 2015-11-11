@@ -61,6 +61,7 @@ async.forEach(Object.keys(blog.entries),function(slug){
       markDown = markDown.replace( /(<li>.+?<\/li>)\n/g, "<ul>$1</ul>\n" );
       markDown = markDown.replace( /\#\# (.+?)\n\n/g, "<h4>$1</h4>\n" );
       markDown = markDown.replace( /\# (.+?)\n\n/g, "<h3>$1</h3>\n" );
+      markDown = markDown.replace( /\!\!\[(.*)\]\((.*)\)/g, "<img style='border:1px solid silver;' alt='$1' src='img/$2'>" );
       markDown = markDown.replace( /\!\[(.*)\]\((.*)\)/g, "<img alt='$1' src='img/$2'>" );
       markDown = markDown.replace( /(.+?)(\n\n|\n$|$)/g, "<p>$1</p>\n" );
       markDown = markDown.replace( /\[(.+?)\]\((.+?)\)/g, "<a href='$2'>$1</a>" );

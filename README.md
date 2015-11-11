@@ -46,9 +46,9 @@ whats_booth: {
 
 ## デザインをもっといいものに変えてみたい！
 
-デザインのプルリクも大歓迎です。デザインは、[./template.html](https://github.com/sakurashiki/booth_maniax/blob/master/template.html)にあります。モバイルで出来る限り速く動かしたいので、CSSもJavaScriptも全てインライン化してあります。ここ以外にデザインに関わるようなものは読み込んでいません。
+デザインのプルリクも大歓迎です。デザインは「[./template.html](https://github.com/sakurashiki/booth_maniax/blob/master/template.html)」にあります。モバイルで出来る限り速く動かしたいので、CSSもJavaScriptも全てインライン化してあります。ここ以外にデザインに関わるようなものは読み込んでいません。
 
-画像ファイルを追加したい場合は、[./docs/img配下](https://github.com/sakurashiki/booth_maniax/tree/master/docs/img)に置いて、HTMLやCSS上からは./img/*.jpgみたいな感じにしていただければ読み込めます。
+画像ファイルを追加したい場合は「[./docs/img配下](https://github.com/sakurashiki/booth_maniax/tree/master/docs/img)」に置いて、HTMLやCSS上からは./img/*.jpgみたいな感じにしていただければ読み込めます。
 
 えんいー！！
 

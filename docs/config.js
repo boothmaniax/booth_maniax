@@ -27,11 +27,11 @@ exports.blog = {
       sambnail_img: 'img/151109_0008.jpg', category:'beginner',
       contents:['before_store_open_begin','shop_type','sale_type','commission_type','before_store_open_end']
     },
-    minuts_to_start: {
+    minutes_to_start: {
       title: '3分で個人のネットショップを開いて、同人グッツの販売を始めてみた',
       shorter_title: '3分でさくっとショップを開設し、作品のネット販売を始める',
       sambnail_img: 'img/151110_0011.jpg', category:'beginner',
-      contents:['3minuts_to_start'],
+      contents:['3minutes_to_start'],
     },
     /*
     whats_booth: {

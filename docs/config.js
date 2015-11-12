@@ -25,21 +25,24 @@ exports.blog = {
       title: '同人作家やアーティストが、作品をネット通販する前に知るべき3つのポイント',
       shorter_title: '作品をネット通販する前に知るべき3つのポイント',
       sambnail_img: 'img/151109_0008.jpg', category:'beginner',
-      contents:['before_store_open_begin','shop_type','sale_type','commission_type','before_store_open_end']
+      contents:['before_store_open_begin','shop_type','sale_type','commission_type','before_store_open_end'],
+      recommends:['minutes_to_start','whats_booth']
     },
     minutes_to_start: {
       title: '3分で個人のネットショップを開いて、同人グッツの販売を始めてみた',
       shorter_title: '3分でさくっとショップを開設し、作品のネット販売を始める',
       sambnail_img: 'img/151110_0011.jpg', category:'beginner',
       contents:['3minutes_to_start'],
+      recommends:['whats_booth','minutes_to_start']
     },
-    /*
     whats_booth: {
       title: '創作活動向けネットショップサービス「BOOTH」は何が良くて何がダメなのか？',
       shorter_title: 'BOOTHという創作向け通販サービスのメリット・デメリット',
       sambnail_img: 'img/boot_image.jpg', category:'beginner',
       contents:['whats_booth'],
+      recommends:['before_store_open','minutes_to_start']
     },
+    /*
     item_music: {
       title: 'BOOTHで音楽をダウンロード配信する方法',
       shorter_title: '音楽をダウンロード配信する方法',

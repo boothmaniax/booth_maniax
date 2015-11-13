@@ -187,6 +187,13 @@ nav>.entries>ul>ul, nav>.entries>ul>ul>li {
   padding: 0;
   margin: 0;
 }
+nav>.entries>ul>ul>li {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+nav>.entries>ul>ul>li:hover {
+  opacity: 0.85;
+}
 .nav_title {
   font-weight: bold;
   margin-bottom: 10px;
@@ -237,8 +244,7 @@ nav>.entries>ul>ul, nav>.entries>ul>ul>li {
   .toppage>nav>.entries>ul>ul>li {
     width: 100%;
   }
-  .toppage>nav>.entries>ul>ul>li>.sumbnail,
-  .toppage>nav>.entries>ul>ul>li>a>.sumbnail {
+  .toppage>nav>.entries>ul>ul>li>.sumbnail {
     width: 30%;
   }
 }
@@ -247,13 +253,14 @@ nav>.entries>ul>ul, nav>.entries>ul>ul>li {
   content: '';
   clear: both;
 }
-.toppage>nav>.entries>ul>ul>li:after { /* clearfix */
+.toppage>nav>.entries>ul>ul>li:after  { /* clearfix */
   display: block;
   content: '';
   clear: both;
 }
 /* サイドバー上のナビゲーション */
-.entry>nav>.entries>ul>li {
+.entry>nav>.entries>ul>li,
+.content_footer>nav>.entries>ul>li {
   font-weight: bold;
   margin-bottom: 5px;
   border-top: 1px dotted rgb(224,39,44);
@@ -261,19 +268,26 @@ nav>.entries>ul>ul, nav>.entries>ul>ul>li {
   margin-top: 20px;
 }
 .entry>nav>.entries>ul>ul>li>.sumbnail,
-.entry>nav>.entries>ul>ul>li>a>.sumbnail {
+.entry>nav>.entries>ul>ul>li>a>.sumbnail,
+.content_footer>nav>.entries>ul>ul>li>.sumbnail,
+.content_footer>nav>.entries>ul>ul>li>a>.sumbnail {
   display: block;
   float:left;
-  width: 40%;
   height: 80px;
   margin-right: 5px;
   background-size: cover;
   background-position: center center;
+  width: 40%;
 }
-.entry>nav>.entries>ul>ul>li:after { /* clearfix */
+.entry>nav>.entries>ul>ul>li:after,
+.content_footer>nav>.entries>ul>ul>li:after { /* clearfix */
   display: block;
   content: '';
   clear: both;
+}
+.content_footer>nav>.entries {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .social {
   height: 40px;
@@ -319,6 +333,11 @@ footer>.labels {
         ##PAGE_CONTENT##
       </section>
       <section class='content_footer'>
+        <nav>
+          <div class='entries'>
+            ##PAGE_RECOMMEND##
+          </div>
+        </nav>
         <div class='social'>
           <a href="http://b.hatena.ne.jp/entry/##ENTRY_URL##" class="hatena-bookmark-button" data-hatena-bookmark-title="##PAGE_TITLE##" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
           <a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>

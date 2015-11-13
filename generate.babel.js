@@ -89,7 +89,8 @@ function generateWebPage( website ){
     fs.readFile('template.html','utf8',function( err, template ) {
       if( err ) { throw err; }
       // グローバルナビゲーションの生成
-      let nav = '<ul>';
+      let nav = '<nav>';
+      nav = '<ul>';
       Object.keys(navList).forEach(function(category){
         nav += '<li>'+navList[category].name+'</li>';
         nav += '<ul>';
@@ -104,6 +105,21 @@ function generateWebPage( website ){
         nav += '</ul>';
       });
       nav += '</ul>';
+      let rec = '';
+      if ( entry.recommends ) {
+        rec = '<ul>';
+        rec += '<li>こんな記事もオススメ!!</li>';
+        rec += '<ul>';
+        entry.recommends.forEach(function(recommend){
+          rec += '<li>';
+          rec += '<a href="'+recommend+'.html">';
+          rec += '<div class="sumbnail" style="background-image:url('+blog.entries[recommend].sambnail_img+');"></div>';
+          rec += '<span class=".title">'+blog.entries[recommend].title+'</span>';
+          rec += '</a>';
+          rec += '</li>';
+        });
+        rec += '</ul>';
+      }
       // テンプレートを元にページを生成
       template = template.replace( /\#\#SITE_TITLE\#\#/g , blog.title );
       template = template.replace( /\#\#SITE_DESC\#\#/g , blog.description );
@@ -124,6 +140,7 @@ function generateWebPage( website ){
         template = template.replace( /\#\#PAGE_TITLE\#\#/g , entry.title );
         template = template.replace( /\#\#PAGE_SUMBNAIL\#\#/g ,blog.url_top + entry.sambnail_img );
         template = template.replace( /\#\#ENTRY_URL\#\#/g , blog.url_top + slug + '.html');
+        template = template.replace( /\#\#PAGE_RECOMMEND\#\#/g, rec);
       }
       template = template.replace( /\#\#PAGE_CONTENT\#\#/g, article);
       template = template.replace( /\#\#PAGE_NAV\#\#/g, nav);

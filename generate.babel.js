@@ -5,57 +5,60 @@
  * This software is released under the MIT License.
 */
 'use strict';
-var fs = require('fs-extra');
-var async = require('async');
-var mkdirp = require("mkdirp");
-var glob = require("glob");
-var ncp = require('ncp').ncp;
-
-var blog = require('./docs/config.js').blog;
-
-// アップデート日を取得
-var d = new Date();
-var updateAt = d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日';
-
-// 静的ファイルのコピー
-mkdirp(blog.content_dir,function(err){
-  if( err ) { throw err; }
-  fs.copy('./docs/img', blog.content_dir+'img',function(){
-    console.log('Copy   - img -> '+blog.content_dir+'img');
+let fs = require('fs-extra');
+let mkdirp = require("mkdirp");
+let ncp = require('ncp').ncp;
+////////////////////////////////////////////////////////////
+// 初期化
+function initialize( blog ) {
+  return new Promise(function( resolv ){
+    let website = { blog: blog };
+    // 本日の日付を取得
+    let d = new Date();
+    website.updateAt = d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日';
+    // 静的ファイルのコピー
+    mkdirp(blog.content_dir,function(err){
+      if( err ) { throw err; }
+      fs.copy('./docs/img', blog.content_dir+'img',function(){
+        console.log('Copy   - img -> '+blog.content_dir+'img');
+      });
+      fs.copy('./docs/css', blog.content_dir+'css',function(){
+        console.log('Copy   - css -> '+blog.content_dir+'css');
+      });
+      fs.copy('./docs/js', blog.content_dir+'js',function(){
+        console.log('Copy   - js -> '+blog.content_dir+'js');
+      });
+    });
+    // グローバルナビゲーション用情報の生成
+    let navList = blog.categories;
+    Object.keys(navList).forEach(function(category){
+      navList[category].list = [];
+    });
+    Object.keys(blog.entries).forEach(function(slug){
+      let entry = blog.entries[slug];
+      if( entry.is_toppage ) { return; }
+      navList[entry.category].list.push({
+        title: entry.shorter_title,
+        sambnail_img: entry.sambnail_img,
+        slug: slug
+      });
+    });
+    website.navList = navList;
+    resolv( website );
   });
-  fs.copy('./docs/css', blog.content_dir+'css',function(){
-    console.log('Copy   - css -> '+blog.content_dir+'css');
-  });
-  fs.copy('./docs/js', blog.content_dir+'js',function(){
-    console.log('Copy   - js -> '+blog.content_dir+'js');
-  });
-});
-// グローバルナビゲーション用情報の生成
-var navList = blog.categories;
-Object.keys(navList).forEach(function(category){
-  navList[category].list = [];
-});
-Object.keys(blog.entries).forEach(function(slug){
-  var entry = blog.entries[slug];
-  if( entry.is_toppage ) { return; }
-  navList[entry.category].list.push({
-    title: entry.shorter_title,
-    sambnail_img: entry.sambnail_img,
-    slug: slug
-  });
-});
-// 各Webページを非同期で出力する
-async.forEach(Object.keys(blog.entries),function(slug){
-  var entry = blog.entries[slug];
-  ////////////////////////////////////////////////////////////
-  // マークダウン形式のファイルを逐次読み込みHTMLの状態にしてConcat
-  new Promise(function( resolv ){
-    var article = '';
+}
+////////////////////////////////////////////////////////////
+// マークダウン形式のファイルを逐次読み込みHTMLの状態にしてConcat
+function compileMarkDown( website ) {
+  return new Promise(function( resolv ){
+    let blog  = website.blog;
+    let entry = blog.entries[website.slug];
+    let article = '';
     entry.contents.forEach(function(content){
-      var mdFileName = 'docs/'+content+'.md';
-      var stat = fs.statSync(mdFileName);
-      var fd = fs.openSync(mdFileName, "r");
-      var markDown = fs.readSync(fd, stat.size, 0, 'utf8')[0];
+      let mdFileName = 'docs/'+content+'.md';
+      let stat = fs.statSync(mdFileName);
+      let fd = fs.openSync(mdFileName, "r");
+      let markDown = fs.readSync(fd, stat.size, 0, 'utf8')[0];
       markDown = markDown.replace( /\+ (.+?)\n/g, "<li>$1</li>" );
       markDown = markDown.replace( /\- (.+?)\n/g, "<li>$1</li>" );
       markDown = markDown.replace( /(<li>.+?<\/li>)\n/g, "<ul>$1</ul>\n" );
@@ -68,14 +71,25 @@ async.forEach(Object.keys(blog.entries),function(slug){
       fs.closeSync(fd);
       article += markDown;
     });
-    resolv( article );
-  ////////////////////////////////////////////////////////////
-  // HTML記事を受け取りテンプレートを元にWebページの状態へと加工
-  }).then(function( article ) { return new Promise(function(resolv){
+    website.article = article;
+    website.entry   = entry;
+    resolv( website );
+  });
+}
+////////////////////////////////////////////////////////////
+// HTML記事を受け取りテンプレートを元にWebページの状態へと加工
+function generateWebPage( website ){
+  return new Promise(function(resolv){
+    let blog     = website.blog;
+    let slug     = website.slug;
+    let article  = website.article;
+    let updateAt = website.updateAt;
+    let navList  = website.navList;
+    let entry    = website.entry;
     fs.readFile('template.html','utf8',function( err, template ) {
       if( err ) { throw err; }
       // グローバルナビゲーションの生成
-      var nav = '<ul>';
+      let nav = '<ul>';
       Object.keys(navList).forEach(function(category){
         nav += '<li>'+navList[category].name+'</li>';
         nav += '<ul>';
@@ -113,18 +127,43 @@ async.forEach(Object.keys(blog.entries),function(slug){
       }
       template = template.replace( /\#\#PAGE_CONTENT\#\#/g, article);
       template = template.replace( /\#\#PAGE_NAV\#\#/g, nav);
-      resolv(template);
+      website.webPage = template;
+      resolv(website);
     });
-  ////////////////////////////////////////////////////////////
-  // WebページをHTMLとして書き出す
-  });}).then(function( webPage ){ return new Promise(function(resolv){
+  });
+}
+////////////////////////////////////////////////////////////
+// WebページをHTMLとして書き出す
+function writeToPlace( website ){
+  return new Promise(function(resolv){
+    let webPage = website.webPage;
+    let blog    = website.blog;
+    let slug    = website.slug;
+    let entry   = website.entry;
     mkdirp(blog.content_dir,function(err){
       if( err ) { throw err; }
-      var webPageName = blog.content_dir + slug + '.html';
+      let webPageName = blog.content_dir + slug + '.html';
       fs.writeFile(webPageName, webPage , function (err) {
-        console.log('Create - '+(entry.contents)+' -> '+webPageName);
+        console.log('Create - '+(entry.contents)+' -> '+slug + '.html');
         if( err ) { throw err; }
+        resolv();
       });
     });
-  });});
+  });
+}
+////////////////////////////////////////////////////////////
+// すべてのWebページを生成する
+initialize(require('./docs/config.js').blog).then(function(website){
+  // 各ページを生成する
+  Object.keys(website.blog.entries).forEach(async function(slug){
+    // オブジェクトのコピー
+    var F = function(){};
+    F.prototype = website;
+    website = new F;
+    website.slug = slug;
+    // Webページを生成する
+    await compileMarkDown(website)
+      .then(generateWebPage)
+      .then(writeToPlace);
+  });
 });

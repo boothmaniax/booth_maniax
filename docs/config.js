@@ -8,8 +8,8 @@ exports.blog = {
   /* ブログのカテゴリー：ナビゲーションの分類 */
   categories: {
     beginner: { name:'BOOTH入門編' },
+    item: { name:'作品販売編' },
     // shop: { name:'ショップページの見せ方TIPS' },
-    // item: { name:'商品ページの見せ方編TIPS' },
     // risk: { name:'販売リスクを減らすTIPS' },
     // faq: { name:'よくあるハマりどころ' },
   },
@@ -19,7 +19,6 @@ exports.blog = {
       is_toppage: true,
       sambnail_img: null,
       contents:['index'],
-      sambnail_img: 'img/boot_image.jpg',
     },
     before_store_open: {
       title: '同人作家やアーティストが、作品をネット通販する前に知るべき3つのポイント',
@@ -42,26 +41,23 @@ exports.blog = {
       contents:['whats_booth'],
       recommends:['before_store_open','minutes_to_start']
     },
-    /*
     item_music: {
-      title: 'BOOTHで音楽をダウンロード配信する方法',
-      shorter_title: '音楽をダウンロード配信する方法',
-      sambnail_img: 'img/.jpg', category:'item',
-      contents:[],
+      title: '手軽に音楽/ボイスドラマをダウンロード販売する方法',
+      shorter_title: '音楽/ボイスドラマをダウンロード販売する方法',
+      sambnail_img: 'img/151116_0001.jpg', category:'item',
+      contents:['item_music_before','item_common_discription','item_music_after'],
+      recommends:['before_store_open','whats_booth']
     },
-    */
+    item_dojin: {
+      title: '低い手数料で手軽に同人誌をネット通販する方法',
+      shorter_title: '同人誌を販売する方法',
+      sambnail_img: 'img/.jpg', category:'item',
+      contents:['item_dojin_before','item_common_discription','item_dojin_after'],
+    },
     /*
     item_novel: {
       title: 'BOOTHで小説を販売する方法',
       shorter_title: '小説を販売する方法',
-      sambnail_img: 'img/.jpg', category:'item',
-      contents:[],
-    },
-    */
-    /*
-    item_dojin: {
-      title: 'BOOTHで同人誌を販売する方法',
-      shorter_title: '同人誌を販売する方法',
       sambnail_img: 'img/.jpg', category:'item',
       contents:[],
     },

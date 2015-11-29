@@ -41,20 +41,42 @@ exports.blog = {
       contents:['whats_booth'],
       recommends:['before_store_open','minutes_to_start']
     },
-    item_music: {
-      title: '手軽に音楽/ボイスドラマをダウンロード販売する方法',
-      shorter_title: '音楽/ボイスドラマをダウンロード販売する方法',
-      sambnail_img: 'img/151116_0001.jpg', category:'item',
-      contents:['item_music_before','item_common_discription','item_music_after'],
+    item_book_jika: {
+      title: '手軽に同人誌を自家通販する方法',
+      shorter_title: '同人誌を自家通販する方法',
+      sambnail_img: 'img/151128_0001.jpg', category:'item',
+      contents:['item_book_before','item_common_discription','item_book_after_jika','item_book_after_common'],
       recommends:['before_store_open','whats_booth']
     },
-    item_dojin: {
-      title: '低い手数料で手軽に同人誌をネット通販する方法',
+    /*
+    item_book_itaku: {
+      title: '手軽に同人誌を委託通販する方法',
+      shorter_title: '同人誌を委託通販する方法',
+      sambnail_img: 'img/151128_0009.jpg', category:'item',
+      contents:['item_book_before','item_common_discription','item_book_after_itaku','item_book_after_common'],
+    },
+    */
+    item_music: {
+      title: '手軽に音楽/ボイスドラマをダウンロード販売する方法',
+      shorter_title: '音楽/ボイスドラマをダウンロード販売する',
+      sambnail_img: 'img/151116_0001.jpg', category:'item',
+      contents:['item_music_before','item_common_discription','item_music_after'],
+      recommends:['before_store_open','whats_booth','item_cd']
+    },
+    item_cd: {
+      title: '手軽に音楽CD/ボイスドラマCDを委託通販する方法',
+      shorter_title: '音楽CD/ボイスドラマCDを委託通販する方法',
+      sambnail_img: 'img/151116_0018.jpg', category:'item',
+      contents:['item_cd_before','item_common_discription','item_cd_after'],
+      recommends:['before_store_open','whats_booth','item_music']
+    },
+    /*
+    item_goods: {
+      title: '低い手数料で手軽にグッズをネット通販する方法',
       shorter_title: '同人誌を販売する方法',
       sambnail_img: 'img/.jpg', category:'item',
       contents:['item_dojin_before','item_common_discription','item_dojin_after'],
     },
-    /*
     item_novel: {
       title: 'BOOTHで小説を販売する方法',
       shorter_title: '小説を販売する方法',

@@ -108,7 +108,7 @@ function generateWebPage( website ){
       let rec = '';
       if ( entry.recommends ) {
         rec = '<ul>';
-        rec += '<li>こんな記事もオススメ!!</li>';
+        rec += '<li>まだちょっと不安！というのであれば、こんな記事も読まれているのでどうぞ！</li>';
         rec += '<ul>';
         entry.recommends.forEach(function(recommend){
           rec += '<li>';
@@ -119,6 +119,7 @@ function generateWebPage( website ){
           rec += '</li>';
         });
         rec += '</ul>';
+        rec += '<p>ではでは！また次回をお楽しみに！</p>';
       }
       // テンプレートを元にページを生成
       template = template.replace( /\#\#SITE_TITLE\#\#/g , blog.title );

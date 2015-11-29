@@ -18,7 +18,10 @@ function initialize( blog ) {
     website.updateAt = d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日';
     // 静的ファイルのコピー
     mkdirp(blog.content_dir,function(err){
-      if( err ) { throw err; }
+      if( err ) {
+        console.log( err );
+        exit;
+      }
       fs.copy('./docs/img', blog.content_dir+'img',function(){
         console.log('Copy   - img -> '+blog.content_dir+'img');
       });
@@ -56,7 +59,13 @@ function compileMarkDown( website ) {
     let article = '';
     entry.contents.forEach(function(content){
       let mdFileName = 'docs/'+content+'.md';
-      let stat = fs.statSync(mdFileName);
+      let stat = null;
+      try{
+        stat = fs.statSync(mdFileName);
+      } catch ( err )  {
+        console.log( err );
+        exit;
+      }
       let fd = fs.openSync(mdFileName, "r");
       let markDown = fs.readSync(fd, stat.size, 0, 'utf8')[0];
       markDown = markDown.replace( /\+ (.+?)\n/g, "<li>$1</li>" );
@@ -87,7 +96,10 @@ function generateWebPage( website ){
     let navList  = website.navList;
     let entry    = website.entry;
     fs.readFile('template.html','utf8',function( err, template ) {
-      if( err ) { throw err; }
+      if( err ) {
+        console.log( err );
+        exit;
+      }
       // グローバルナビゲーションの生成
       let nav = '<nav>';
       nav = '<ul>';
@@ -163,11 +175,17 @@ function writeToPlace( website ){
     let slug    = website.slug;
     let entry   = website.entry;
     mkdirp(blog.content_dir,function(err){
-      if( err ) { throw err; }
+      if( err ) {
+        console.log( err );
+        exit;
+      }
       let webPageName = blog.content_dir + slug + '.html';
       fs.writeFile(webPageName, webPage , function (err) {
         console.log('Create - '+(entry.contents)+' -> '+slug + '.html');
-        if( err ) { throw err; }
+        if( err ) {
+          console.log( err );
+          exit;
+        }
         resolv();
       });
     });

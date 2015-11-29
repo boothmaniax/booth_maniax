@@ -59,7 +59,7 @@ exports.blog = {
       title: '手軽に音楽/ボイスドラマをダウンロード販売する方法',
       shorter_title: '音楽/ボイスドラマをダウンロード販売する方法',
       sambnail_img: 'img/151116_0001.jpg', category:'item',
-      contents:['item_music_before_common','item_common_discription','item_music_after'],
+      contents:['item_music_before','item_common_discription','item_music_after'],
       recommends:['before_store_open','whats_booth','item_cd']
     },
     item_cd: {

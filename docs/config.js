@@ -52,7 +52,7 @@ exports.blog = {
       title: '手軽に同人誌を委託通販する方法',
       shorter_title: '同人誌を委託通販する方法',
       sambnail_img: 'img/151128_0009.jpg', category:'item',
-      contents:['item_book_before','item_book_before_itaku','item_common_discription','item_book_after_itaku','item_book_after_common'],
+      contents:['item_book_before_common','item_book_before_itaku','item_common_discription','item_book_after_itaku','item_book_after_common'],
       recommends:['item_book_jika','before_store_open','whats_booth']
     },
     item_music: {

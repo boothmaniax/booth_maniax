@@ -123,10 +123,10 @@ function generateWebPage( website ){
       }
       // テンプレートを元にページを生成
       template = template.replace( /\#\#SITE_TITLE\#\#/g , blog.title );
-      template = template.replace( /\#\#SITE_DESC\#\#/g , blog.description );
       template = template.replace( /\#\#SITE_UPDATE_AT\#\#/g , updateAt );
       template = template.replace( /\#\#BLOG_TOPURL\#\#/g , blog.url_top );
       if( entry.is_toppage ) {
+        template = template.replace( /\#\#SITE_DESC\#\#/g , blog.description );
         template = template.replace( /\#\#BEGIN_TOPPAGE\#\#/g ,'' );
         template = template.replace( /\#\#END_TOPPAGE\#\#/g ,'' );
         template = template.replace( /\#\#BEGIN_ENTRY\#\#(.*\n){0,10000}.*?\#\#END_ENTRY\#\#/g ,'' );
@@ -134,6 +134,9 @@ function generateWebPage( website ){
         template = template.replace( /\#\#PAGE_SUMBNAIL\#\#/g ,blog.url_top + blog.sambnail_img );
         template = template.replace( /\#\#ENTRY_URL\#\#/g , blog.url_top );
       } else {
+        let siteDesc = article.match(/\<p\>(.*?)\<\/p\>/gi)[0];
+        siteDesc = siteDesc.replace(/<.*?>/g,'');
+        template = template.replace( /\#\#SITE_DESC\#\#/g , siteDesc );
         template = template.replace( /\#\#BEGIN_ENTRY\#\#/g ,'' );
         template = template.replace( /\#\#END_ENTRY\#\#/g ,'' );
         template = template.replace( /\#\#BEGIN_TOPPAGE\#\#(.*\n){0,10000}.*?\#\#END_TOPPAGE\#\#/g ,'' );

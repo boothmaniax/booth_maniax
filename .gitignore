@@ -3,3 +3,4 @@
 seed.key
 items.lip
 *.DS_Store
+npm-debug.log

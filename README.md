@@ -13,8 +13,8 @@ BOOTH MANIAXは、ピクシブが運営しているBOOTHというサービスに
 node.js単体じゃ動作できないので、必要なパッケージを読み込ませましょう。
 
 ```bash
-npm init
 npm install -g babel@5
+npm install
 ```
 
 ### コンテンツの生成
@@ -22,7 +22,7 @@ npm install -g babel@5
 コンテンツをコンバートさせるのは、以下のコマンドです。
 
 ```bash
-babel-node generate.js
+babel-node generate.babel.js
 ```
 
 すると「./content/boothmaniax.github.io」の配下に、Webページとして表示可能なコンテンツが配置されます。あとは、適当なWebサーバーなんかをローカルで動かして、コンテンツを表示させて確認するだけです。

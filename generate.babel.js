@@ -125,6 +125,7 @@ function generateWebPage( website ){
       template = template.replace( /\#\#SITE_TITLE\#\#/g , blog.title );
       template = template.replace( /\#\#SITE_UPDATE_AT\#\#/g , updateAt );
       template = template.replace( /\#\#BLOG_TOPURL\#\#/g , blog.url_top );
+      template = template.replace( /\#\#BLOG_DESC\#\#/g , blog.description );
       if( entry.is_toppage ) {
         template = template.replace( /\#\#SITE_DESC\#\#/g , blog.description );
         template = template.replace( /\#\#BEGIN_TOPPAGE\#\#/g ,'' );

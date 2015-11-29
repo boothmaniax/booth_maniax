@@ -13,8 +13,8 @@ BOOTH MANIAXは、ピクシブが運営しているBOOTHというサービスに
 node.js単体じゃ動作できないので、必要なパッケージを読み込ませましょう。
 
 ```bash
-npm install
 npm install -g babel@5
+npm install
 ```
 
 ### コンテンツの生成

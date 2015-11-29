@@ -22,7 +22,7 @@ npm install
 コンテンツをコンバートさせるのは、以下のコマンドです。
 
 ```bash
-babel-node generate.js
+babel-node generate.babel.js
 ```
 
 すると「./content/boothmaniax.github.io」の配下に、Webページとして表示可能なコンテンツが配置されます。あとは、適当なWebサーバーなんかをローカルで動かして、コンテンツを表示させて確認するだけです。

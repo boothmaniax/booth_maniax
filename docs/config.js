@@ -45,22 +45,21 @@ exports.blog = {
       title: '手軽に同人誌を自家通販する方法',
       shorter_title: '同人誌を自家通販する方法',
       sambnail_img: 'img/151128_0001.jpg', category:'item',
-      contents:['item_book_before','item_common_discription','item_book_after_jika','item_book_after_common'],
-      recommends:['before_store_open','whats_booth']
+      contents:['item_book_before_common','item_book_before_jika','item_common_discription','item_book_after_jika','item_book_after_common'],
+      recommends:['item_book_itaku','before_store_open','whats_booth']
     },
-    /*
     item_book_itaku: {
       title: '手軽に同人誌を委託通販する方法',
       shorter_title: '同人誌を委託通販する方法',
       sambnail_img: 'img/151128_0009.jpg', category:'item',
-      contents:['item_book_before','item_common_discription','item_book_after_itaku','item_book_after_common'],
+      contents:['item_book_before','item_book_before_itaku','item_common_discription','item_book_after_itaku','item_book_after_common'],
+      recommends:['item_book_jika','before_store_open','whats_booth']
     },
-    */
     item_music: {
       title: '手軽に音楽/ボイスドラマをダウンロード販売する方法',
-      shorter_title: '音楽/ボイスドラマをダウンロード販売する',
+      shorter_title: '音楽/ボイスドラマをダウンロード販売する方法',
       sambnail_img: 'img/151116_0001.jpg', category:'item',
-      contents:['item_music_before','item_common_discription','item_music_after'],
+      contents:['item_music_before_common','item_common_discription','item_music_after'],
       recommends:['before_store_open','whats_booth','item_cd']
     },
     item_cd: {

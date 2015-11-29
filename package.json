@@ -22,6 +22,7 @@
   "devDependencies": {
     "async": "^1.5.0",
     "babel": "^5.8.34",
+    "fs-extra": "^0.26.2",
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
     "util": "^0.10.3",

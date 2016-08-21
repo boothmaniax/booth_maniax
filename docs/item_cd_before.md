@@ -1,4 +1,4 @@
-同人イベントとかで販売した音楽CDやボイスドラマCDなんかを、ネット上で委託通販として頒布したいという人はいっぱいるはず！そう人たちのために、審査不要で販売手数料0円なネット通販サービス「[BOOTH](https://booth.pm/start?utm_source=blog&utm_medium=banner&utm_campaign=boothmaniax)」で、さくっとショップを作り、作品を頒布する方法を紹介します。
+同人イベントとかで販売した音楽CDやボイスドラマCDなんかを、ネット上で委託通販として頒布したいという人はいっぱいるはず！そういう人たちのために、審査不要で販売手数料0円なネット通販サービス「[BOOTH](https://booth.pm/start?utm_source=blog&utm_medium=banner&utm_campaign=boothmaniax)」で、さくっとショップを作り、作品を頒布する方法を紹介します。
 
 # 販売までの流れ
 

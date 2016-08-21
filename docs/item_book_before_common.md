@@ -1,4 +1,4 @@
-同人イベントとかで販売した同人誌を、ネット上でさくっと頒布したいという人はいっぱいいるはず！そう人たちのために、審査不要で販売手数料0円なネット通販サービス「[BOOTH](https://booth.pm/start?utm_source=blog&utm_medium=banner&utm_campaign=boothmaniax)」で、さくっとショップを作り、作品を頒布する方法を紹介します。
+同人イベントとかで販売した同人誌を、ネット上でさくっと頒布したいという人はいっぱいいるはず！そういう人たちのために、審査不要で販売手数料0円なネット通販サービス「[BOOTH](https://booth.pm/start?utm_source=blog&utm_medium=banner&utm_campaign=boothmaniax)」で、さくっとショップを作り、作品を頒布する方法を紹介します。
 
 # 販売までの流れ
 
